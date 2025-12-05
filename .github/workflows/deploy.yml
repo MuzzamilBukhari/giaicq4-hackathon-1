@@ -1,0 +1,39 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Or your default branch (e.g., master)
+
+jobs:
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./docusaurus-project # Important: specify the working directory
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build Docusaurus website
+        run: yarn build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docusaurus-project/build # Important: specify the build output directory
+          cname: # Optional: your custom domain, e.g., example.com
+          # Required if you're deploying a project site (username.github.io/repo-name)
+          # Check your docusaurus.config.js baseUrl
+          # if you set baseUrl: '/your-repo-name/', then uncomment this:
+          # destination_dir: your-repo-name
