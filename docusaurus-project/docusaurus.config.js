@@ -20,9 +20,10 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://MuzzamilBukhari.github.io',
+  // Update this to your actual Vercel domain when deployed
+  url: 'https://giaicq4-hackathon-1.vercel.app',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  // For Vercel deployment, use '/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
@@ -70,19 +71,22 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'Physical AI & Humanoid Robotics Textbook',
+        title: 'Physical AI & Humanoid Robotics',
         logo: {
           alt: 'Textbook Logo',
           src: 'img/logo.svg', // Assuming a logo will be placed here
         },
         items: [
           {
-            type: 'doc',
-            docId: 'chapters-overview',
+            to: 'docs/intro',
             position: 'left',
-            label: 'Chapters',
+            label: 'Textbook',
           },
-          {to: '/docs/glossary', label: 'Glossary', position: 'left'},
+          {
+            to: 'docs/setup-guides',
+            position: 'left',
+            label: 'Setup Guides',
+          },
           {
             href: 'https://github.com/MuzzamilBukhari/giaicq4-hackathon-1',
             label: 'GitHub',
@@ -101,8 +105,8 @@ const config = {
                 to: '/docs/intro',
               },
               {
-                label: 'Chapters',
-                to: '/category/chapters',
+                label: 'ROS 2 Fundamentals',
+                to: '/docs/module-1-ros2',
               },
               {
                 label: 'Glossary',

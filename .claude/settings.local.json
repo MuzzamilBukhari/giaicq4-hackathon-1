@@ -1,19 +1,18 @@
 {
   "permissions": {
     "allow": [
-      "Bash(.specify/scripts/bash/create-phr.sh:*)",
       "Bash(git fetch:*)",
+      "Bash(ls:*)",
       "Bash(git checkout:*)",
-      "Bash(.specify/scripts/powershell/check-prerequisites.ps1:*)",
-      "Bash(.specify/scripts/powershell/create-new-feature.ps1:*)",
-      "Bash(npx create-docusaurus@latest:*)",
-      "Bash(mkdir:*)",
-      "Bash(npm install)",
+      "Bash(powershell.exe:*)",
       "Bash(npm run build)",
-      "Bash(npm run clear)",
+      "Bash(npm run build:*)",
+      "Bash(colcon build:*)",
+      "Bash(touch:*)",
       "Bash(git add:*)",
+      "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(git remote set-url:*)"
+      "mcp__github__create_pull_request"
     ],
     "deny": [],
     "ask": []
