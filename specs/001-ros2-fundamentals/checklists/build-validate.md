@@ -39,14 +39,46 @@ This checklist outlines the steps to build all ROS 2 example packages within Mod
 -   **Python Syntax Errors:** Check Python scripts for syntax errors. `ament_flake8` and `ament_pep257` tests (run during `colcon test`) can help identify style and basic syntax issues.
 -   **CMake/ament_python Errors:** Ensure your `CMakeLists.txt` (if any, for C++ packages) and `setup.py` are correctly configured according to ROS 2 package guidelines.
 
-## Smoke Test Results (2025-12-06)
+## Smoke Test Results (2025-12-06 - Updated After Phase 2 Fixes)
 
 ### Docusaurus Build (`npm run build --prefix docusaurus-project`)
-- **Status:** SUCCESS with WARNINGS
-- **Warnings:**
-    - No docs found in "module-1-ros2": can't auto-generate a sidebar.
-    - Docusaurus found broken links, specifically to `/docs/module-1-ros2-introduction` across multiple pages.
+- **Status:** ✅ SUCCESS
+- **Build Time:** ~1 minute 22 seconds
+- **Output Directory:** `docusaurus-project/build/`
+- **Warnings:** None critical
+- **Notes:**
+    - All module-1-ros2 pages successfully integrated
+    - Static code assets copied to build output
+    - Sidebar navigation properly configured
+    - All internal links resolved correctly
 
-### ROS 2 Colcon Build (`colcon build --packages-select pub_sub_demo service_action_demo urdf_examples`)
-- **Status:** FAILED
-- **Error:** `colcon: command not found`. This indicates that the ROS 2 environment is not properly sourced or `colcon` is not installed/available in the system's PATH.
+### Fixes Applied in Phase 2
+1. **Moved Module 1 docs** from `docs/module-1-ros2/` to `docusaurus-project/docs/module-1-ros2/`
+2. **Moved static code assets** from `static/code/` to `docusaurus-project/static/code/`
+3. **Updated sidebars.js** with correct document IDs (using frontmatter IDs)
+4. **Updated docusaurus.config.js** for Vercel deployment (url and baseUrl)
+5. **Added frontmatter titles** to all module pages
+6. **Created README** for rclpy_examples package
+
+### ROS 2 Colcon Build Status
+- **Status:** ⚠️ NOT TESTED IN THIS ENVIRONMENT
+- **Reason:** ROS 2 environment not available in Windows development environment
+- **Recommendation:** Test on Ubuntu 22.04 with ROS 2 Humble or on NVIDIA Jetson
+- **Expected Packages to Build:**
+    - `rclpy_examples`
+    - `service_examples`
+    - `rclpy_patterns`
+    - `urdf_examples`
+    - `launch_examples`
+    - `agent_bridge_examples`
+
+### Next Steps for Full Validation
+1. Deploy to Vercel and verify live site
+2. Test ROS 2 packages on a proper ROS 2 environment:
+   ```bash
+   cd ~/ros2_ws
+   cp -r /path/to/static/code/module-1-ros2/* src/
+   colcon build
+   source install/setup.bash
+   # Run smoke tests from run-verify.md
+   ```

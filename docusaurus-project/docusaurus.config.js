@@ -20,9 +20,10 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://MuzzamilBukhari.github.io',
+  // Update this to your actual Vercel domain when deployed
+  url: 'https://giaicq4-hackathon-1.vercel.app',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  // For Vercel deployment, use '/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
@@ -102,7 +103,7 @@ const config = {
               },
               {
                 label: 'ROS 2 Fundamentals',
-                to: '/docs/module-1-ros2-introduction',
+                to: '/docs/module-1-ros2',
               },
               {
                 label: 'Glossary',
