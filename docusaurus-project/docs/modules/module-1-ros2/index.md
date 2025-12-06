@@ -111,7 +111,7 @@ Each chapter includes practical labs:
 - Familiarity with Linux terminal
 - (Optional) C++ for advanced performance
 
-See [Setup Guides](../../setup-guides/setup-guides-index) for installation instructions.
+See the Setup Guides section for installation instructions.
 
 ## Resources
 
