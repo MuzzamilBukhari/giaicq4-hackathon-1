@@ -71,19 +71,22 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'Physical AI & Humanoid Robotics Textbook',
+        title: 'Physical AI & Humanoid Robotics',
         logo: {
           alt: 'Textbook Logo',
           src: 'img/logo.svg', // Assuming a logo will be placed here
         },
         items: [
           {
-            type: 'doc',
-            docId: 'chapters-overview',
+            to: 'docs/intro',
             position: 'left',
-            label: 'Chapters',
+            label: 'Textbook',
           },
-          {to: '/docs/glossary', label: 'Glossary', position: 'left'},
+          {
+            to: 'docs/setup-guides',
+            position: 'left',
+            label: 'Setup Guides',
+          },
           {
             href: 'https://github.com/MuzzamilBukhari/giaicq4-hackathon-1',
             label: 'GitHub',

@@ -9,7 +9,10 @@
       "Bash(npm run build:*)",
       "Bash(colcon build:*)",
       "Bash(touch:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "mcp__github__create_pull_request"
     ],
     "deny": [],
     "ask": []

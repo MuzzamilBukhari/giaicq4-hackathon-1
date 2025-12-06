@@ -15,30 +15,16 @@
  @type {import('@docusaurus/plugin-content-docs').SidebarsConfig}
  */
 const sidebars = {
-  // By default, Docusaurus generates a sidebar from the docs folder structure
   tutorialSidebar: [
     'intro',
     {
       type: 'category',
-      label: 'Chapters',
-      link: {
-        type: 'doc',
-        id: 'chapters-overview',
-      },
+      label: 'Setup Guides',
       items: [
-        'chapter-1-foundations-of-physical-ai',
-        'chapter-2-ros2-fundamentals',
-        'chapter-3-gazebo-simulation',
-        'chapter-4-unity-visualization',
-        'chapter-5-nvidia-isaac-sim',
-        'chapter-6-perception-and-slam',
-        'chapter-7-humanoid-kinematics',
-        'chapter-8-humanoid-dynamics',
-        'chapter-9-locomotion-control',
-        'chapter-10-manipulation-systems',
-        'chapter-11-human-robot-interaction',
-        'chapter-12-conversational-robotics',
-        'chapter-13-vla-driven-robotics',
+        'setup-guides/setup-guides-index',
+        'setup-guides/setup-guides-hardware-setup',
+        'setup-guides/setup-guides-software-setup',
+        'setup-guides/setup-guides-cloud-bridge',
       ],
     },
     {
@@ -47,40 +33,61 @@ const sidebars = {
       items: [
         {
           type: 'category',
-          label: 'Module 1 — ROS 2 Fundamentals',
-          link: {
-            type: 'doc',
-            id: 'module-1-ros2/module-1-ros2-introduction',
-          },
+          label: 'Module 1: ROS 2 (Weeks 3-5)',
           items: [
-            'module-1-ros2/module-1-ros2-nodes-topics',
-            'module-1-ros2/module-1-ros2-services-actions',
-            'module-1-ros2/module-1-ros2-rclpy-patterns',
-            'module-1-ros2/module-1-ros2-urdf-robot-description',
-            'module-1-ros2/module-1-ros2-launch-files-params',
-            'module-1-ros2/module-1-ros2-agent-ros-bridge',
-            'module-1-ros2/module-1-ros2-capstone',
+            'modules/module-1-ros2/module-1-ros2-index',
+            {
+              type: 'category',
+              label: 'Chapter 1: Foundations & Nodes',
+              items: [
+                'modules/module-1-ros2/chapter-1/module-1-ros2-chapter-1-overview',
+                'modules/module-1-ros2/chapter-1/module-1-ros2-chapter-1-topics',
+                'modules/module-1-ros2/chapter-1/module-1-ros2-chapter-1-labs',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'Chapter 2: Services & Actions',
+              items: [
+                'modules/module-1-ros2/chapter-2/module-1-ros2-chapter-2-overview',
+                'modules/module-1-ros2/chapter-2/module-1-ros2-chapter-2-examples',
+                'modules/module-1-ros2/chapter-2/module-1-ros2-chapter-2-labs',
+              ],
+            },
           ],
         },
-        // Module 2..4 will be added as they are implemented
+        {
+          type: 'category',
+          label: 'Module 2: Digital Twin (Weeks 6-7)',
+          items: [
+            'modules/module-2-digital-twin/module-2-digital-twin-index',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Module 3: NVIDIA Isaac (Weeks 8-10)',
+          items: [
+            'modules/module-3-isaac/module-3-isaac-index',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Module 4: VLA & Humanoids (Weeks 11-13)',
+          items: [
+            'modules/module-4-vla/module-4-vla-index',
+          ],
+        },
       ],
     },
-    'glossary',
-    'appendix',
-  ],
-
-  // But you can create a sidebar manually
-  /*
-  tutorialSidebar: [
-    'intro',
-    'hello',
     {
       type: 'category',
-      label: 'Tutorial',
-      items: ['tutorial-basics/create-a-document'],
+      label: 'References',
+      items: [
+        'references/glossary',
+      ],
     },
   ],
-   */
 };
 
 export default sidebars;
+
