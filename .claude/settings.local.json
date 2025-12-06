@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch:*)",
+      "Bash(ls:*)",
+      "Bash(git checkout:*)",
+      "Bash(powershell.exe:*)",
+      "Bash(npm run build)",
+      "Bash(npm run build:*)",
+      "Bash(colcon build:*)",
+      "Bash(touch:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

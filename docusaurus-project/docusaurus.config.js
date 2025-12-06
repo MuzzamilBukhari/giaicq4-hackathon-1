@@ -101,8 +101,8 @@ const config = {
                 to: '/docs/intro',
               },
               {
-                label: 'Chapters',
-                to: '/category/chapters',
+                label: 'ROS 2 Fundamentals',
+                to: '/docs/module-1-ros2-introduction',
               },
               {
                 label: 'Glossary',
