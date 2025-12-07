@@ -1,0 +1,45 @@
+/**
+ * Custom theme variables for the Physical AI & Humanoid Robotics Textbook
+ * Contains only color variables as per requirements - no layout/positioning CSS
+ */
+
+:root {
+  --color-bg: #ffffff;                /* White background */
+  --color-surface: #f3f4f6;           /* Silver-ish surface */
+  --color-primary-0: #0ea5e9;         /* Blue gradient start */
+  --color-primary-1: #2563eb;         /* Blue gradient end */
+  --color-text: #0f172a;              /* Dark text */
+  --color-link: var(--color-primary-1); /* Link color using primary-1 */
+}
+
+/* Map the custom variables to Docusaurus Infima variables */
+:root {
+  --ifm-color-primary: var(--color-primary-1);
+  --ifm-color-primary-dark: #215bc2;
+  --ifm-color-primary-darker: #1f56b8;
+  --ifm-color-primary-darkest: #1a4796;
+  --ifm-color-primary-light: #3a76ec;
+  --ifm-color-primary-lighter: #4d84ee;
+  --ifm-color-primary-lightest: #6c9af1;
+  --ifm-background-color: var(--color-bg);
+  --ifm-background-surface-color: var(--color-surface);
+  --ifm-font-color-base: var(--color-text);
+  --ifm-link-color: var(--color-link);
+  --ifm-link-hover-color: #1a4796;
+}
+
+/* Dark mode color adjustments */
+[data-theme='dark'] {
+  --ifm-color-primary: #3a76ec;
+  --ifm-color-primary-dark: #2a66dd;
+  --ifm-color-primary-darker: #275fcc;
+  --ifm-color-primary-darkest: #204db8;
+  --ifm-color-primary-light: #4d84ee;
+  --ifm-color-primary-lighter: #5d91f4;
+  --ifm-color-primary-lightest: #7ca6f7;
+  --ifm-background-color: #0f172a;
+  --ifm-background-surface-color: #1e293b;
+  --ifm-font-color-base: #f3f4f6;
+  --ifm-link-color: #5d91f4;
+  --ifm-link-hover-color: #7ca6f7;
+}

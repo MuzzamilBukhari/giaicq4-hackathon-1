@@ -1,7 +1,0 @@
-qos_test_node:
-  ros__parameters:
-    qos_depth: 5
-    qos_reliability:
-      kind: reliable # or best_effort
-    qos_durability:
-      kind: transient_local # or volatile

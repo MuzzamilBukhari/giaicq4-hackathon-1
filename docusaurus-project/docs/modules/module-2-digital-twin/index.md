@@ -1,39 +1,44 @@
 ---
-id: module-2-digital-twin-index
-title: "Module 2: Digital Twin & Simulation"
-sidebar_label: "Module 2: Digital Twin"
+title: Module 2 - Digital Twin & Simulation
 sidebar_position: 2
+description: Learn how to build physics-based simulations using Gazebo and Unity, create digital twins, and simulate sensors for robotics applications.
 ---
 
-# Module 2: Digital Twin & Simulation (Weeks 6-7)
+# Module 2: Digital Twin & Simulation
 
-Build high-fidelity digital twins of robots using Gazebo and Unity for physics-based simulation and visualization.
+## Overview
 
-## Coming Soon
+This module introduces students to the fundamental concepts of digital twin technology and physics-based simulation for robotics. You'll learn how to create realistic virtual environments that mirror real-world robotic systems, enabling testing, validation, and development without physical hardware.
 
-This module is currently under development. Content will cover:
+## Learning Objectives
 
-- **Gazebo Simulation**: Physics-based robot simulation
-- **URDF/SDF Models**: Robot description formats
-- **Unity Integration**: Real-time 3D visualization
-- **ROS-Unity Bridge**: Connecting simulation with ROS 2
-- **Sensor Simulation**: Camera, LiDAR, IMU in simulation
+By the end of this module, you will be able to:
+- Create and configure physics-based simulation environments using Gazebo
+- Import and configure robot models using URDF/SDF formats
+- Integrate Unity for real-time visualization of robotic systems
+- Implement sim-to-real transfer techniques for robotics applications
+- Apply domain randomization to improve model robustness
 
-## Placeholder Topics
+## Prerequisites
 
-### Chapter 1: Gazebo Fundamentals
-- World creation and environment design
-- Robot model import and configuration
-- Physics engines and contact dynamics
+- Basic understanding of ROS 2 concepts (covered in Module 1)
+- Ubuntu 22.04 with ROS 2 Humble installed
+- Basic knowledge of robot kinematics and dynamics
 
-### Chapter 2: Unity for Robotics
-- Unity Robotics Hub setup
-- URDF import and visualization
-- Real-time data streaming
+## Module Structure
 
-### Chapter 3: Sim-to-Real Transfer
-- Domain randomization techniques
-- Calibration and validation
-- Deployment workflows
+This module is divided into three chapters that build upon each other:
 
-Check back soon for complete content! 🚧
+1. **Chapter 1: Gazebo Fundamentals** - Core simulation concepts and environment design
+2. **Chapter 2: Unity for Robotics** - Visualization and real-time data integration
+3. **Chapter 3: Sim-to-Real Transfer** - Bridging simulation and real-world robotics
+
+## External Resources
+
+- [Gazebo Classic Documentation](https://classic.gazebosim.org/)
+- [Unity Robotics Hub](https://github.com/Unity-Technologies/Unity-Robotics-Hub)
+- [ROS-Unity Integration Guide](https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/main/tutorials/ros_unity_integration/README.md)
+
+## Time Estimate
+
+This module should take approximately 2 weeks to complete, with 3-4 hours of study and lab work per week.

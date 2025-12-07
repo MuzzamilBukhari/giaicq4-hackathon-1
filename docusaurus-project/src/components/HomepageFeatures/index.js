@@ -4,32 +4,32 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'ROS 2 Fundamentals',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Master the Robot Operating System 2 for building distributed robotic applications.
+        Learn nodes, topics, services, actions, and launch systems with hands-on exercises.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Digital Twin & Simulation',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Create realistic simulations using Gazebo, Unity, and NVIDIA Isaac Sim.
+        Bridge the gap between virtual prototyping and real-world deployment.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'VLA & Humanoid Systems',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Implement Vision-Language-Action models for natural robot interaction.
+        Design complete humanoid systems with locomotion, manipulation, and conversational AI.
       </>
     ),
   },

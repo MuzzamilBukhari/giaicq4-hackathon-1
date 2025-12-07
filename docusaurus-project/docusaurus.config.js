@@ -56,7 +56,7 @@ const config = {
         },
         blog: false, // Disable blog for this textbook
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: './src/css/custom-theme.css',
         },
       }),
     ],
@@ -98,15 +98,44 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Learning Modules',
             items: [
               {
                 label: 'Introduction',
                 to: '/docs/intro',
               },
               {
-                label: 'ROS 2 Fundamentals',
-                to: '/docs/module-1-ros2',
+                label: 'Module 1: ROS 2 Fundamentals',
+                to: '/docs/modules/module-1-ros2',
+              },
+              {
+                label: 'Module 2: Digital Twin',
+                to: '/docs/modules/module-2-digital-twin',
+              },
+              {
+                label: 'Module 3: NVIDIA Isaac Sim',
+                to: '/docs/modules/module-3-isaac-sim',
+              },
+              {
+                label: 'Module 4: VLA & Humanoid',
+                to: '/docs/modules/module-4-vla',
+              },
+            ],
+          },
+          {
+            title: 'Resources',
+            items: [
+              {
+                label: 'Setup Guides',
+                to: '/docs/setup-guides',
+              },
+              {
+                label: 'Hardware Setup',
+                to: '/docs/setup-guides/hardware-setup',
+              },
+              {
+                label: 'Software Setup',
+                to: '/docs/setup-guides/software-setup',
               },
               {
                 label: 'Glossary',
@@ -115,27 +144,18 @@ const config = {
             ],
           },
           {
-            title: 'Community', // Keep default community links or customize as needed
+            title: 'Community & Tools',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'ROS 2 Documentation',
+                href: 'https://docs.ros.org/en/humble/',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'NVIDIA Isaac Sim',
+                href: 'https://developer.nvidia.com/isaac-sim',
               },
               {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
+                label: 'GitHub Repository',
                 href: 'https://github.com/MuzzamilBukhari/giaicq4-hackathon-1',
               },
             ],
