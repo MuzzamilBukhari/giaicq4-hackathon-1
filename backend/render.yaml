@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: rag-chatbot-api
+    env: python
+    region: oregon
+    plan: free
+    branch: 001-rag-chatbot
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /status
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: QDRANT_URL
+        sync: false
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: QDRANT_COLLECTION_NAME
+        value: textbook_chunks
+      - key: NEON_DB_URL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: http://localhost:3000,http://localhost:3001
+      - key: APP_NAME
+        value: RAG Chatbot
+      - key: DEBUG
+        value: False

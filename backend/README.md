@@ -63,7 +63,12 @@ pytest tests/
 
 ## Deployment
 
-The service is designed for deployment on Railway.app. See the deployment documentation for more details.
+The service is designed for deployment on Render.com. See `DEPLOYMENT.md` for detailed deployment instructions including:
+- Setting up Qdrant Cloud and Neon Postgres
+- Configuring environment variables
+- Deploying with render.yaml or manually via dashboard
+- Indexing documents
+- Monitoring and troubleshooting
 
 ## Architecture
 
