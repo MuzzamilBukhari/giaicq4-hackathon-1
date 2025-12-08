@@ -94,6 +94,9 @@ const config = {
           },
         ],
       },
+      // Add the RAG chat widget to the layout
+      algolia: undefined, // Disable Algolia if present to avoid conflicts
+      // The RAG chat widget will be integrated via a custom layout component
       footer: {
         style: 'dark',
         links: [

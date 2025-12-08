@@ -1,0 +1,310 @@
+openapi: 3.0.3
+info:
+  title: RAG Chatbot Query API
+  description: API for querying the RAG system to get answers from textbook content
+  version: 1.0.0
+servers:
+  - url: https://rag-chatbot.railway.app
+    description: Production server on Railway
+  - url: http://localhost:8000
+    description: Local development server
+
+paths:
+  /query:
+    post:
+      summary: Query textbook content with retrieval
+      description: Submit a question to be answered using retrieval-augmented generation from textbook content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+      responses:
+        '200':
+          description: Successful response with answer and citations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /selected:
+    post:
+      summary: Query using selected text only
+      description: Submit a question to be answered using only the provided text context (no vector lookup)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SelectedTextRequest'
+      responses:
+        '200':
+          description: Successful response with answer based on provided text
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /index:
+    post:
+      summary: Index textbook content
+      description: Chunk and embed markdown files under /docs/, store vectors in Qdrant and metadata in Neon
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IndexRequest'
+      responses:
+        '200':
+          description: Indexing completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IndexResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /status:
+    get:
+      summary: Health check endpoint
+      description: Check the status of the RAG system and its dependencies
+      responses:
+        '200':
+          description: System is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+        '500':
+          description: System is not healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    QueryRequest:
+      type: object
+      required:
+        - question
+      properties:
+        question:
+          type: string
+          description: The question to ask about textbook content
+          example: "What is the difference between forward and inverse kinematics?"
+        mode:
+          type: string
+          enum: [full_retrieval, selected_text_only]
+          default: full_retrieval
+          description: Query mode - 'full_retrieval' for vector search, 'selected_text_only' for provided context only
+
+    SelectedTextRequest:
+      type: object
+      required:
+        - question
+        - selected_text
+      properties:
+        question:
+          type: string
+          description: The question to ask about the selected text
+          example: "Can you explain this concept in simpler terms?"
+        selected_text:
+          type: string
+          description: The text that the user has highlighted
+          example: "Forward kinematics is the process of calculating the position and orientation of the end-effector of a robotic arm based on the joint angles."
+
+    AnswerResponse:
+      type: object
+      required:
+        - answer
+        - sources
+        - meta
+      properties:
+        answer:
+          type: string
+          description: The AI-generated answer to the question
+          example: "Forward kinematics calculates the end-effector position from joint angles, while inverse kinematics calculates the joint angles needed to achieve a desired end-effector position."
+        sources:
+          type: array
+          description: List of sources used to generate the answer
+          items:
+            $ref: '#/components/schemas/Source'
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+
+    Source:
+      type: object
+      required:
+        - doc_path
+        - heading
+        - excerpt
+        - score
+      properties:
+        doc_path:
+          type: string
+          description: Path to the source document
+          example: "/docs/module-3/kinematics.md"
+        heading:
+          type: string
+          description: Heading of the relevant section
+          example: "Forward vs Inverse Kinematics"
+        excerpt:
+          type: string
+          description: The specific text excerpt used
+          example: "Forward kinematics is the process of calculating the position and orientation of the end-effector..."
+        score:
+          type: number
+          format: float
+          minimum: 0.0
+          maximum: 1.0
+          description: Relevance score from vector search
+          example: 0.85
+
+    ResponseMeta:
+      type: object
+      required:
+        - latency_ms
+        - model
+      properties:
+        latency_ms:
+          type: integer
+          description: Time taken to generate the response in milliseconds
+          example: 2450
+        model:
+          type: string
+          description: The model used for generation
+          example: "gpt-4o"
+        retrieval_count:
+          type: integer
+          description: Number of chunks retrieved for the answer
+          example: 3
+
+    IndexRequest:
+      type: object
+      properties:
+        docs_path:
+          type: string
+          default: "/docs"
+          description: Path to the documentation to be indexed
+          example: "/docs"
+        chunk_size:
+          type: integer
+          default: 600
+          minimum: 500
+          maximum: 800
+          description: Size of chunks in tokens
+        overlap:
+          type: integer
+          default: 80
+          minimum: 50
+          maximum: 120
+          description: Overlap between chunks in tokens
+        replace:
+          type: boolean
+          default: false
+          description: Whether to replace existing index or upsert
+
+    IndexResponse:
+      type: object
+      required:
+        - status
+        - processed_files
+        - total_chunks
+      properties:
+        status:
+          type: string
+          enum: [completed, failed]
+          description: Status of the indexing operation
+        processed_files:
+          type: integer
+          description: Number of files processed
+          example: 25
+        total_chunks:
+          type: integer
+          description: Total number of chunks created
+          example: 150
+        errors:
+          type: array
+          items:
+            type: string
+            description: List of errors that occurred during indexing
+
+    StatusResponse:
+      type: object
+      required:
+        - status
+        - app_version
+        - qdrant_ok
+        - neon_ok
+        - vector_count
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unavailable]
+          description: Overall health status
+        app_version:
+          type: string
+          description: Current application version
+          example: "1.0.0"
+        qdrant_ok:
+          type: boolean
+          description: Whether Qdrant connection is healthy
+        neon_ok:
+          type: boolean
+          description: Whether Neon connection is healthy
+        vector_count:
+          type: integer
+          description: Number of vectors in the collection (sample)
+          example: 1500
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: "QUERY_ERROR"
+        message:
+          type: string
+          description: Human-readable error message
+          example: "Failed to process query due to vector database error"

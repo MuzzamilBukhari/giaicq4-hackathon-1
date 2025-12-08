@@ -161,6 +161,17 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'AI Assistant',
+      items: [
+        'rag/architecture',
+        'rag/api-documentation',
+        'rag/deploy-railway',
+        'rag/update-index',
+        'rag/troubleshooting',
+      ],
+    },
+    {
+      type: 'category',
       label: 'References',
       items: [
         'references/glossary',

@@ -6,7 +6,16 @@
       "Bash(git fetch --all --prune)",
       "Bash(dir \"C:\\Muzzamil\\Learning\\GIAIC\\4th quarter\\hackathon\\hackathon-book\\docusaurus-project\\docs\\modules\\module-4-vla\\chapter-1-vla-fundamentals\")",
       "Bash(git checkout -b deploy-modules-2-3-4-ui)",
-      "Bash(git add .)"
+      "Bash(git add .)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: Deploy modules 2, 3, 4 and UI updates\n\n- Add complete content for Module 2: Digital Twin (Gazebo, Unity, Sim-to-Real)\n- Add complete content for Module 3: Isaac Sim\n- Add complete content for Module 4: VLA (Vision-Language-Action Models)\n- Update UI components and styling\n- Update configuration and sidebar navigation\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push -u origin deploy-modules-2-3-4-ui)",
+      "Bash(git checkout -b 001-rag-chatbot)",
+      "Bash(mkdir -p specs/001-rag-chatbot)",
+      "Bash(powershell.exe -Command \".specify/scripts/powershell/setup-plan.ps1 -Json\")",
+      "Bash(powershell.exe -Command \".specify/scripts/powershell/check-prerequisites.ps1 -Json\")",
+      "Bash(dir \"specs/001-rag-chatbot/contracts/\")",
+      "Bash(powershell.exe -Command \".specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks\")",
+      "Bash(powershell.exe -Command \"if (Test-Path ''specs/001-rag-chatbot/checklists'') { Get-ChildItem ''specs/001-rag-chatbot/checklists'' } else { Write-Output ''No checklists directory found'' }\")"
     ],
     "deny": [],
     "ask": []

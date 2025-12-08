@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r backend/requirements.txt
+        pip install pytest pytest-asyncio
+
+    - name: Run tests
+      run: |
+        # For now, just run basic checks
+        python -c "import backend.app.main; print('Import successful')"
+        python -c "import backend.app.agent; print('Agent import successful')"
+        python -c "import backend.app.indexer; print('Indexer import successful')"
+        python -c "import backend.app.retriever; print('Retriever import successful')"
+        python -c "import backend.app.db_meta; print('DB Meta import successful')"
+
+    - name: Run linter (optional)
+      run: |
+        pip install flake8
+        flake8 backend/ --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 backend/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
