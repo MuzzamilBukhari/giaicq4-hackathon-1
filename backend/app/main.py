@@ -100,8 +100,8 @@ async def query_endpoint(request: QueryRequest, req: Request) -> AnswerResponse:
             )
             query_vector = embedding_response.data[0].embedding
 
-            # Search for similar content in Qdrant
-            search_results = await qdrant_manager.search_vectors(query_vector, limit=5)
+            # Search for similar content in Qdrant (synchronous call)
+            search_results = qdrant_manager.search_vectors(query_vector, limit=5)
 
             if not search_results:
                 # Handle empty retrieval case
@@ -209,8 +209,8 @@ async def health_check() -> Dict[str, Any]:
     try:
         # Check Qdrant connection
         await qdrant_manager.connect()
-        await qdrant_manager.ensure_collection_exists()
-        vector_count = await qdrant_manager.get_vector_count()
+        qdrant_manager.ensure_collection_exists()
+        vector_count = qdrant_manager.get_vector_count()
         qdrant_ok = True
     except Exception as e:
         logging.error(f"Qdrant health check failed: {e}")

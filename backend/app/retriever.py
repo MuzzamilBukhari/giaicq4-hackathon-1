@@ -24,16 +24,16 @@ class QdrantManager:
             logging.error(f"Failed to connect to Qdrant: {e}")
             raise
 
-    async def ensure_collection_exists(self):
+    def ensure_collection_exists(self):
         """Ensure the collection exists with proper configuration"""
         try:
             # Check if collection exists
-            collections = await self.client.get_collections()
+            collections = self.client.get_collections()
             collection_names = [col.name for col in collections.collections]
 
             if self.collection_name not in collection_names:
                 # Create collection with 1536-dimensional vectors for OpenAI embeddings
-                await self.client.create_collection(
+                self.client.create_collection(
                     collection_name=self.collection_name,
                     vectors_config=models.VectorParams(
                         size=1536,  # OpenAI embedding dimension
@@ -49,7 +49,7 @@ class QdrantManager:
             logging.error(f"Failed to ensure collection exists: {e}")
             raise
 
-    async def upsert_vectors(self, vectors: List[Dict[str, Any]]):
+    def upsert_vectors(self, vectors: List[Dict[str, Any]]):
         """
         Upsert vectors to Qdrant with metadata
         Each vector dict should contain:
@@ -66,18 +66,18 @@ class QdrantManager:
             )
             points.append(point)
 
-        await self.client.upsert(
+        self.client.upsert(
             collection_name=self.collection_name,
             points=points
         )
         logging.info(f"Upserted {len(points)} vectors to Qdrant")
 
-    async def search_vectors(self, query_vector: List[float], limit: int = 10) -> List[Dict[str, Any]]:
+    def search_vectors(self, query_vector: List[float], limit: int = 10) -> List[Dict[str, Any]]:
         """
         Search for similar vectors in Qdrant
         Returns list of points with payload and score
         """
-        results = await self.client.search(
+        results = self.client.search(
             collection_name=self.collection_name,
             query_vector=query_vector,
             limit=limit,
@@ -97,16 +97,18 @@ class QdrantManager:
 
     async def delete_collection(self):
         """Delete the collection (for testing/development)"""
+    def delete_collection(self):
+        """Delete the collection (for testing/development)"""
         try:
-            await self.client.delete_collection(self.collection_name)
+            self.client.delete_collection(self.collection_name)
             logging.info(f"Deleted Qdrant collection: {self.collection_name}")
         except Exception as e:
             logging.error(f"Failed to delete collection: {e}")
 
-    async def get_vector_count(self) -> int:
+    def get_vector_count(self) -> int:
         """Get the total number of vectors in the collection"""
         try:
-            collection_info = await self.client.get_collection(self.collection_name)
+            collection_info = self.client.get_collection(self.collection_name)
             return collection_info.points_count
         except Exception as e:
             logging.error(f"Failed to get vector count: {e}")
