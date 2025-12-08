@@ -8,7 +8,7 @@ This document explains the migration from Railway to Render for the RAG chatbot 
 - ✅ `railway.toml` - Railway-specific configuration file
 
 ### Files Added
-- ✅ `render.yaml` - Render Blueprint configuration (Infrastructure as Code)
+- ✅ `render.yaml` - Render Blueprint configuration (Infrastructure as Code) - **Located in repository root**
 
 ### Files Modified
 - ✅ `Dockerfile` - Updated CMD to use `$PORT` environment variable
@@ -20,9 +20,9 @@ This document explains the migration from Railway to Render for the RAG chatbot 
 
 | Aspect | Railway | Render |
 |--------|---------|--------|
-| **Config File** | `railway.toml` | `render.yaml` |
+| **Config File** | `railway.toml` | `render.yaml` (in repo root) |
 | **Port Handling** | `$PORT` env var | `$PORT` env var |
-| **Root Directory** | Auto-detected | Must specify for monorepo |
+| **Root Directory** | Auto-detected | Specify with `rootDir: backend` |
 | **Health Check** | Optional | Recommended (`/status`) |
 | **Free Tier** | 500 hrs/month | 750 hrs/month, auto-suspend |
 | **CLI Tool** | `@railway/cli` | Not needed (dashboard only) |
@@ -40,7 +40,7 @@ git pull origin 001-rag-chatbot  # Get latest changes
 ```
 
 The following files have been updated for Render:
-- `render.yaml` (new)
+- `render.yaml` (new - in repository root, not in backend/)
 - `Dockerfile` (updated)
 - `.env.example` (updated)
 - `DEPLOYMENT.md` (rewritten)

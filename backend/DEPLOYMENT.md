@@ -39,8 +39,14 @@ Before deploying to Render, make sure you have:
 ### Option A: Deploy with render.yaml (Infrastructure as Code - Recommended)
 
 1. **Push render.yaml to GitHub**
+   
+   The `render.yaml` file is located in the **repository root** (not in `/backend`). This file tells Render to:
+   - Use the `backend` directory as the root directory for the service
+   - Install dependencies from `backend/requirements.txt`
+   - Run the FastAPI app from `backend/app/main.py`
+   
    ```bash
-   git add backend/render.yaml
+   git add render.yaml
    git commit -m "Add Render deployment configuration"
    git push origin 001-rag-chatbot
    ```
