@@ -15,7 +15,10 @@
       "Bash(powershell.exe -Command \".specify/scripts/powershell/check-prerequisites.ps1 -Json\")",
       "Bash(dir \"specs/001-rag-chatbot/contracts/\")",
       "Bash(powershell.exe -Command \".specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks\")",
-      "Bash(powershell.exe -Command \"if (Test-Path ''specs/001-rag-chatbot/checklists'') { Get-ChildItem ''specs/001-rag-chatbot/checklists'' } else { Write-Output ''No checklists directory found'' }\")"
+      "Bash(powershell.exe -Command \"if (Test-Path ''specs/001-rag-chatbot/checklists'') { Get-ChildItem ''specs/001-rag-chatbot/checklists'' } else { Write-Output ''No checklists directory found'' }\")",
+      "Bash(git checkout main)",
+      "Bash(git add .claude/settings.local.json)",
+      "Bash(git commit -m \"chore: Update settings\")"
     ],
     "deny": [],
     "ask": []
