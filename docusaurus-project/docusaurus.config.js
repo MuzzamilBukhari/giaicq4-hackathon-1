@@ -21,7 +21,7 @@ const config = {
 
   // Set the production url of your site here
   // Update this to your actual Vercel domain when deployed
-  url: 'https://giaicq4-hackathon-1.vercel.app',
+  url: 'https://giaicq4-hackathon-1-muzzamilbukharis-projects.vercel.app/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For Vercel deployment, use '/'
   baseUrl: '/',
@@ -131,15 +131,15 @@ const config = {
               },
               {
                 label: 'Hardware Setup',
-                to: '/docs/setup-guides/hardware-setup',
+                to: 'docs/setup-guides/setup-guides-hardware-setup',
               },
               {
                 label: 'Software Setup',
-                to: '/docs/setup-guides/software-setup',
+                to: 'docs/setup-guides/setup-guides-software-setup',
               },
               {
                 label: 'Glossary',
-                to: '/docs/glossary',
+                to: 'docs/references/glossary',
               },
             ],
           },
