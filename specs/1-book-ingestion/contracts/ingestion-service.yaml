@@ -1,0 +1,85 @@
+# API Contract: Book Ingestion Service
+
+## Ingestion Service Contract
+
+### Ingestion Request
+```
+POST /ingest
+```
+
+**Request Body**:
+```json
+{
+  "book_base_url": "https://example-book-site.github.io",
+  "chunk_size": 512,
+  "overlap_size": 64,
+  "collection_name": "book-content",
+  "force_refresh": false
+}
+```
+
+**Response**:
+```json
+{
+  "run_id": "ingestion-run-123",
+  "status": "started",
+  "estimated_completion": "2025-12-16T12:00:00Z",
+  "total_urls_found": 150,
+  "estimated_chunks": 450
+}
+```
+
+### Ingestion Status Check
+```
+GET /ingest/{run_id}
+```
+
+**Response**:
+```json
+{
+  "run_id": "ingestion-run-123",
+  "status": "processing|completed|failed",
+  "processed_urls": 75,
+  "total_urls": 150,
+  "created_chunks": 200,
+  "failed_urls": 2,
+  "start_time": "2025-12-16T10:00:00Z",
+  "end_time": null,
+  "progress_percentage": 50.0
+}
+```
+
+### Configuration Schema
+The ingestion process accepts the following configuration parameters:
+
+**Type Definitions**:
+```
+type IngestionConfig = {
+  book_base_url: string (required) - Base URL of the Docusaurus book site
+  chunk_size: integer (default: 512) - Size of text chunks in tokens
+  overlap_size: integer (default: 64) - Overlap between chunks in tokens
+  collection_name: string (default: "book-content") - Qdrant collection name
+  force_refresh: boolean (default: false) - Whether to reprocess all content
+  max_retries: integer (default: 3) - Max retry attempts for failed requests
+  delay_between_requests: float (default: 0.1) - Delay in seconds between requests
+}
+```
+
+### Error Responses
+All endpoints return standard error format:
+```json
+{
+  "error": {
+    "code": "ERROR_CODE",
+    "message": "Human-readable error message",
+    "details": "Additional error details"
+  }
+}
+```
+
+### Error Codes
+- `INVALID_URL`: The provided book URL is malformed or inaccessible
+- `EMBEDDING_ERROR`: Failed to generate embeddings from Cohere API
+- `STORAGE_ERROR`: Failed to store vectors in Qdrant
+- `NETWORK_ERROR`: Network connectivity issues during content fetching
+- `CONFIG_ERROR`: Invalid configuration parameters provided

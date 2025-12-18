@@ -21,7 +21,7 @@ const config = {
 
   // Set the production url of your site here
   // Update this to your actual Vercel domain when deployed
-  url: 'https://giaicq4-hackathon-1-muzzamilbukharis-projects.vercel.app/',
+  url: 'https://physicalai-and-humanoid-robotics-textbook-muzzamil-bukhari.vercel.app/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For Vercel deployment, use '/'
   baseUrl: '/',

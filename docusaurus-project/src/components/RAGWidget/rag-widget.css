@@ -1,0 +1,218 @@
+/**
+ * RAG Agent Widget CSS Styling
+ * Styles for the Docusaurus-integrated RAG Agent widget
+ */
+
+.rag-agent-container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.rag-agent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.rag-agent-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #25c2a0;
+}
+
+.rag-agent-status {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  color: #666;
+}
+
+.rag-agent-messages {
+  height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #fafafa;
+}
+
+.rag-agent-message {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  max-width: 80%;
+}
+
+.rag-agent-message p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.rag-agent-user {
+  background-color: #25c2a0;
+  color: white;
+  margin-left: auto;
+  text-align: right;
+}
+
+.rag-agent-assistant {
+  background-color: #e8f4fd;
+  color: #242526;
+  margin-right: auto;
+}
+
+.rag-agent-welcome {
+  background-color: #f8f9fa;
+  color: #666;
+  border: 1px dashed #ddd;
+  text-align: center;
+}
+
+.rag-agent-system {
+  background-color: #fff3cd;
+  color: #856404;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.rag-agent-input-area {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.rag-agent-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 60px;
+  font-family: inherit;
+}
+
+.rag-agent-input:focus {
+  outline: none;
+  border-color: #25c2a0;
+  box-shadow: 0 0 0 2px rgba(37, 194, 160, 0.2);
+}
+
+.rag-agent-send-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #25c2a0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.rag-agent-send-btn:hover {
+  background-color: #22a68a;
+}
+
+.rag-agent-send-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.rag-agent-selected-text {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 4px;
+}
+
+.rag-agent-context-header {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #856404;
+}
+
+.rag-agent-context-content {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #856404;
+  line-height: 1.4;
+}
+
+.rag-agent-clear-btn {
+  padding: 0.25rem 0.5rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.rag-agent-clear-btn:hover {
+  background-color: #c82333;
+}
+
+.rag-agent-sources {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.rag-agent-sources-header {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #495057;
+}
+
+.rag-agent-sources-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.rag-agent-sources-list li {
+  margin-bottom: 0.25rem;
+}
+
+.rag-agent-sources-list a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.rag-agent-sources-list a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .rag-agent-container {
+    padding: 0.75rem;
+  }
+
+  .rag-agent-messages {
+    height: 200px;
+  }
+
+  .rag-agent-message {
+    max-width: 90%;
+  }
+
+  .rag-agent-input-area {
+    flex-direction: column;
+  }
+
+  .rag-agent-send-btn {
+    align-self: flex-end;
+  }
+}
