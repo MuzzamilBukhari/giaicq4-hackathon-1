@@ -7,7 +7,7 @@ export default function Root({ children }) {
   return (
     <>
       {children}
-      <RAGWidget endpoint="/api/v1/chat" position="floating" />
+      <RAGWidget endpoint="http://localhost:8000/api/ask-streaming" position="floating" />
     </>
   );
 }
