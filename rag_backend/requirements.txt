@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+cohere
+qdrant-client
+sqlalchemy
+asyncpg
+aiosqlite
+pydantic
+alembic
